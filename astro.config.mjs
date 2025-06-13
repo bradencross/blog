@@ -7,5 +7,6 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
 	site: 'https://bradencross.github.io',
 	base: 'blog',
+	output: 'static',
 	integrations: [mdx(), sitemap()],
 });
