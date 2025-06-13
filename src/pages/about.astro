@@ -1,0 +1,49 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title="About Me" description="Learn more about me and my journey" />
+	</head>
+	<body>
+		<Header />
+		<section class="section">
+			<div class="container">
+				<div class="card">
+					<div class="card-content">
+						<h1 class="title is-1 has-text-white">About Me</h1>
+						<div class="content">
+							<p>
+								Welcome to my blog! I'm passionate about sharing my thoughts, experiences, and knowledge with the world.
+								This space is where I document my journey, share insights, and connect with like-minded individuals.
+							</p>
+
+							<p>
+								I believe in continuous learning and growth, and I'm excited to share my discoveries and perspectives
+								with you. Whether you're here for technical insights, personal stories, or just to connect, I'm glad
+								you've found your way to my corner of the internet.
+							</p>
+
+							<p>
+								Feel free to explore my blog posts, reach out through the contact information below, or connect with
+								me on social media. I'm always happy to engage in meaningful conversations and learn from others'
+								experiences.
+							</p>
+
+							<p>
+								Thank you for being here, and I hope you find value in the content I share. Let's learn and grow
+								together!
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<Footer />
+	</body>
+</html>

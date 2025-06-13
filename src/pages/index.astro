@@ -1,0 +1,94 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime());
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<section class="section">
+			<div class="container">
+				<div class="columns is-multiline">
+					{sortedPosts.map((post) => (
+						<div class="column is-12">
+							<div class="card">
+								<div class="card-content">
+									<h2 class="title is-3">
+										<a href={`/blog/${post.id}`}>{post.data.title}</a>
+									</h2>
+									<p class="subtitle is-6 has-text-grey-light">
+										{new Date(post.data.pubDate).toLocaleDateString()}
+									</p>
+									<p class="content">{post.data.description}</p>
+									<a href={`/blog/${post.id}`} class="button is-link is-light">
+										Read more
+									</a>
+								</div>
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	main {
+		margin: auto;
+		padding: 1rem;
+		width: 800px;
+		max-width: calc(100% - 2rem);
+		color: white;
+		font-size: 20px;
+		line-height: 1.6;
+	}
+	.posts {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		margin-top: 2rem;
+	}
+	.post {
+		background: rgba(255, 255, 255, 0.1);
+		padding: 1.5rem;
+		border-radius: 8px;
+	}
+	.post h2 {
+		margin: 0;
+		font-size: 1.5rem;
+	}
+	.post h2 a {
+		color: white;
+		text-decoration: none;
+	}
+	.post h2 a:hover {
+		text-decoration: underline;
+	}
+	.date {
+		color: rgba(255, 255, 255, 0.6);
+		font-size: 0.9rem;
+		margin: 0.5rem 0;
+	}
+	.description {
+		margin: 1rem 0;
+	}
+	.read-more {
+		color: var(--accent);
+		text-decoration: none;
+	}
+	.read-more:hover {
+		text-decoration: underline;
+	}
+</style>

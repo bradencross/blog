@@ -1,0 +1,165 @@
+---
+title: 'Creating a Blog Website with Astro.js using Cursor'
+description: 'A step-by-step guide to building a modern blog website using Astro.js and Cursor IDE'
+pubDate: 'Jun 12 2025'
+---
+
+# Creating a Blog Website with Astro.js using Cursor
+
+In this guide, we'll walk through the process of creating a modern blog website using Astro.js and Cursor IDE. We'll cover everything from initial setup to deploying your blog.
+
+## Why Astro.js?
+
+Astro.js is a modern static site builder that offers several advantages for blog creation:
+
+- **Performance**: Astro delivers lightning-fast performance by shipping less JavaScript to the browser
+- **Content-focused**: Built-in support for Markdown and MDX
+- **Flexibility**: Use your favorite UI components and frameworks
+- **Developer Experience**: Excellent developer tools and hot module replacement
+
+## Getting Started
+
+### 1. Create a New Project
+
+First, let's create a new Astro project using Cursor. Open your terminal and run:
+
+```bash
+npm create astro@latest
+```
+
+When prompted, choose the following options:
+- Project name: your-blog-name
+- Template: Blog
+- TypeScript: Yes
+- Install dependencies: Yes
+
+### 2. Project Structure
+
+After installation, your project will have this basic structure:
+
+```
+your-blog-name/
+├── src/
+│   ├── components/
+│   ├── content/
+│   ├── layouts/
+│   ├── pages/
+│   └── styles/
+├── public/
+└── package.json
+```
+
+### 3. Adding Bulma for Styling
+
+To add Bulma to your project, run:
+
+```bash
+npm install bulma
+```
+
+Then create a global CSS file at `src/styles/global.css`:
+
+```css
+@import 'bulma/css/bulma.min.css';
+
+/* Custom styles */
+body {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+.navbar {
+    background-color: #2a2a2a !important;
+}
+
+/* Add more custom styles as needed */
+```
+
+### 4. Creating Blog Posts
+
+Blog posts are stored in the `src/content/blog` directory. You can write posts in Markdown or MDX format. Here's an example structure:
+
+```markdown
+---
+title: 'Your Post Title'
+description: 'A brief description of your post'
+pubDate: 'Mar 19 2024'
+heroImage: '../../assets/your-image.jpg'
+---
+
+Your post content goes here...
+```
+
+### 5. Customizing the Layout
+
+The main layout components are:
+- `src/components/Header.astro`: Navigation bar
+- `src/layouts/BlogPost.astro`: Blog post template
+- `src/pages/index.astro`: Home page
+
+### 6. Using Cursor's AI Features
+
+Cursor IDE offers powerful AI features that can help you:
+- Generate code snippets
+- Debug issues
+- Refactor code
+- Get instant answers to programming questions
+
+To use these features:
+1. Press `Cmd/Ctrl + K` to open the AI command palette
+2. Type your question or request
+3. Let Cursor help you write and improve your code
+
+## Best Practices
+
+1. **Content Organization**
+   - Keep your blog posts in the `content/blog` directory
+   - Use consistent frontmatter for all posts
+   - Organize assets in the `public` directory
+
+2. **Performance**
+   - Optimize images before adding them
+   - Use Astro's built-in image optimization
+   - Keep JavaScript usage minimal
+
+3. **Development**
+   - Use TypeScript for better type safety
+   - Follow Astro's component patterns
+   - Keep components modular and reusable
+
+## Deployment
+
+You can deploy your Astro blog to various platforms:
+
+1. **Vercel**
+   ```bash
+   npm install -g vercel
+   vercel
+   ```
+
+2. **Netlify**
+   ```bash
+   npm install -g netlify-cli
+   netlify deploy
+   ```
+
+3. **GitHub Pages**
+   - Enable GitHub Actions in your repository
+   - Use the Astro GitHub Pages action
+
+## Conclusion
+
+Creating a blog with Astro.js and Cursor is a powerful combination that gives you:
+- Modern development tools
+- Excellent performance
+- Great developer experience
+- AI-powered assistance
+
+Start building your blog today and enjoy the benefits of this modern tech stack!
+
+## Resources
+
+- [Astro Documentation](https://docs.astro.build)
+- [Cursor IDE](https://cursor.sh)
+- [Bulma Documentation](https://bulma.io/documentation)
+- [MDX Documentation](https://mdxjs.com) 
