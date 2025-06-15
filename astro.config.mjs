@@ -5,8 +5,6 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://www.bradencross.com',
-	base: '/',
-	output: 'static',
+	site: 'https://bradencross.com',
 	integrations: [mdx(), sitemap()],
 });
