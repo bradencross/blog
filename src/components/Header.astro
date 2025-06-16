@@ -8,9 +8,14 @@ import { SITE_TITLE } from '../consts';
 			<a class="navbar-item" href="/">
 				{SITE_TITLE}
 			</a>
+			<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+				<span aria-hidden="true"></span>
+				<span aria-hidden="true"></span>
+				<span aria-hidden="true"></span>
+			</a>
 		</div>
 
-		<div class="navbar-menu">
+		<div id="navbarMenu" class="navbar-menu">
 			<div class="navbar-end">
 				<a class="navbar-item" href="/">Blog</a>
 				<a class="navbar-item" href="/about">About</a>
@@ -18,3 +23,40 @@ import { SITE_TITLE } from '../consts';
 		</div>
 	</div>
 </nav>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+		$navbarBurgers.forEach(el => {
+			el.addEventListener('click', () => {
+				const target = el.dataset.target;
+				const $target = document.getElementById(target);
+				if ($target) {
+					el.classList.toggle('is-active');
+					$target.classList.toggle('is-active');
+				}
+			});
+		});
+	});
+</script>
+
+<style>
+	.navbar-burger {
+		color: var(--neon-blue);
+	}
+	.navbar-burger span {
+		background-color: currentColor;
+	}
+	.navbar-burger:hover {
+		color: var(--neon-pink);
+	}
+	@media screen and (max-width: 1023px) {
+		.navbar-menu {
+			background-color: var(--dark-bg);
+			box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+		}
+		.navbar-menu.is-active {
+			display: block;
+		}
+	}
+</style>
