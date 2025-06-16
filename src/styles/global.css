@@ -19,8 +19,8 @@
 
 /* Custom styles */
 body {
-	background-color: var(--cyber-yellow);
-	color: var(--dark-bg);
+	background-color: var(--dark-bg);
+	color: #ffffff;
 	font-family: 'Orbitron', 'Atkinson', sans-serif;
 	margin: 0;
 	padding: 0;
