@@ -3,6 +3,10 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE } from '../consts';
+
+const startDate = new Date('2018-06-01').getTime();
+const currentDate = new Date().getTime();
+const yearsOfExperience = Math.floor((currentDate - startDate) / (1000 * 60 * 60 * 24 * 365.25));
 ---
 
 <!doctype html>
@@ -19,25 +23,22 @@ import { SITE_TITLE } from '../consts';
 						<h1 class="title is-1 has-text-white">About Me</h1>
 						<div class="content">
 							<p>
-								Welcome to my blog! I'm passionate about sharing my thoughts, experiences, and knowledge with the world.
-								This space is where I document my journey, share insights, and connect with like-minded individuals.
+								Hi, I'm Braden. I'm and electrical engineer by training, but I'm a software engineer by trade with {yearsOfExperience} years of experience in the field.
+								 I'm currently working as a senior developer at <a href="https://www.alayacare.com">AlayaCare</a>.
 							</p>
 
 							<p>
-								I believe in continuous learning and growth, and I'm excited to share my discoveries and perspectives
-								with you. Whether you're here for technical insights, personal stories, or just to connect, I'm glad
-								you've found your way to my corner of the internet.
+								I have a beautiful wife named Sydney, two children (Lily and Remi), and a dog named Murphy who I live with in
+								Victoria, BC, Canada.
 							</p>
 
 							<p>
-								Feel free to explore my blog posts, reach out through the contact information below, or connect with
-								me on social media. I'm always happy to engage in meaningful conversations and learn from others'
-								experiences.
+								The purpose of this blog is to share my thoughts and knowledge of the software world. Mostly I am hoping this
+								will help improve my technical writing skills as well as dive deeper into topics that I find interesting.
 							</p>
-
 							<p>
-								Thank you for being here, and I hope you find value in the content I share. Let's learn and grow
-								together!
+								This site was created using Astro, Bulma, and most importantly Cursor. Except for the content of the blog, the entire website was 
+								generated using Cursor Agents. 
 							</p>
 						</div>
 					</div>
