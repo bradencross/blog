@@ -1,5 +1,6 @@
 ---
 import { SITE_TITLE } from '../consts';
+import ThemeToggle from './ThemeToggle.astro';
 ---
 
 <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -19,6 +20,9 @@ import { SITE_TITLE } from '../consts';
 			<div class="navbar-end">
 				<a class="navbar-item" href="/">Blog</a>
 				<a class="navbar-item" href="/about">About</a>
+				<div class="navbar-item">
+					<ThemeToggle />
+				</div>
 			</div>
 		</div>
 	</div>
@@ -54,6 +58,11 @@ import { SITE_TITLE } from '../consts';
 		.navbar-menu {
 			background-color: var(--dark-bg);
 			box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+			transition: background-color 0.3s ease;
+		}
+		[data-theme="light"] .navbar-menu {
+			background-color: var(--light-bg);
+			box-shadow: 0 8px 16px var(--light-shadow);
 		}
 		.navbar-menu.is-active {
 			display: block;
