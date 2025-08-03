@@ -16,35 +16,125 @@ const yearsOfExperience = Math.floor((currentDate - startDate) / (1000 * 60 * 60
 	</head>
 	<body>
 		<Header />
-		<section class="section">
+		<main class="main-content">
 			<div class="container">
-				<div class="card">
-					<div class="card-content">
-						<h1 class="title is-1 has-text-white">About Me</h1>
-						<div class="content">
-							<p>
-								Hi, I'm Braden. I'm and electrical engineer by training, but I'm a software engineer by trade with {yearsOfExperience} years of experience in the field.
-								 I'm currently working as a senior developer at <a href="https://www.alayacare.com">AlayaCare</a>.
-							</p>
+				<article class="about-card">
+					<header class="about-header">
+						<h1 class="about-title">About Me</h1>
+					</header>
+					<div class="about-content">
+						<p>
+							Hi, I'm Braden. I'm and electrical engineer by training, but I'm a software engineer by trade with {yearsOfExperience} years of experience in the field.
+							 I'm currently working as a senior developer at <a href="https://www.alayacare.com">AlayaCare</a>.
+						</p>
 
-							<p>
-								I have a beautiful wife named Sydney, two children (Lily and Remi), and a dog named Murphy who I live with in
-								Victoria, BC, Canada.
-							</p>
+						<p>
+							I have a beautiful wife named Sydney, two children (Lily and Remi), and a dog named Murphy who I live with in
+							Victoria, BC, Canada.
+						</p>
 
-							<p>
-								The purpose of this blog is to share my thoughts and knowledge of the software world. Mostly I am hoping this
-								will help improve my technical writing skills as well as dive deeper into topics that I find interesting.
-							</p>
-							<p>
-								This site was created using Astro, Bulma, and most importantly Cursor. Except for the content of the blog, the entire website was 
-								generated using Cursor Agents. 
-							</p>
-						</div>
+						<p>
+							The purpose of this blog is to share my thoughts and knowledge of the software world. Mostly I am hoping this
+							will help improve my technical writing skills as well as dive deeper into topics that I find interesting.
+						</p>
+						<p>
+							This site was created using Astro, Bulma, and most importantly Cursor. Except for the content of the blog, the entire website was 
+							generated using Cursor Agents. 
+						</p>
 					</div>
-				</div>
+				</article>
 			</div>
-		</section>
+		</main>
 		<Footer />
 	</body>
 </html>
+
+<style>
+	.main-content {
+		min-height: calc(100vh - 200px);
+		padding: 3rem 0;
+	}
+	
+	.container {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 0 1.5rem;
+	}
+	
+	.about-card {
+		background: var(--remarkable-paper);
+		border: 1px solid var(--remarkable-border);
+		border-radius: 8px;
+		padding: 2.5rem;
+		box-shadow: 0 2px 4px var(--remarkable-shadow);
+	}
+	
+	.about-header {
+		margin-bottom: 2rem;
+		text-align: center;
+	}
+	
+	.about-title {
+		font-size: 2.5rem;
+		font-weight: 600;
+		margin: 0;
+		color: var(--remarkable-accent);
+	}
+	
+	.about-content {
+		color: var(--remarkable-text);
+		line-height: 1.6;
+		font-size: 1.1rem;
+	}
+	
+	.about-content p {
+		margin-bottom: 1.5rem;
+	}
+	
+	.about-content p:last-child {
+		margin-bottom: 0;
+	}
+	
+	.about-content a {
+		color: var(--remarkable-accent);
+		text-decoration: none;
+		transition: color 0.2s ease;
+	}
+	
+	.about-content a:hover {
+		color: var(--remarkable-text);
+		text-decoration: underline;
+	}
+	
+	@media (max-width: 768px) {
+		.main-content {
+			padding: 2rem 0;
+		}
+		
+		.about-card {
+			padding: 2rem;
+		}
+		
+		.about-title {
+			font-size: 2rem;
+		}
+		
+		.about-content {
+			font-size: 1rem;
+		}
+	}
+	
+	@media (max-width: 480px) {
+		.container {
+			padding: 0 1rem;
+		}
+		
+		.about-card {
+			padding: 1.5rem;
+		}
+		
+		.about-title {
+			font-size: 1.8rem;
+		}
+	}
+</style>
