@@ -14,73 +14,251 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 <html lang="en">
 	<head>
 		<BaseHead title={title} description={description} />
-		<style>
-			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
-			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
-			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
-			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-		</style>
 	</head>
 
 	<body>
 		<Header />
-		<main>
-			<article>
-				<div class="hero-image">
-					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
-				</div>
-				<div class="prose">
-					<div class="title">
-						<div class="date">
-							<FormattedDate date={pubDate} />
-							{
-								updatedDate && (
-									<div class="last-updated-on">
-										Last updated on <FormattedDate date={updatedDate} />
-									</div>
-								)
-							}
-						</div>
-						<h1>{title}</h1>
-						<hr />
+		<main class="main-content">
+			<article class="blog-post">
+				{heroImage && (
+					<div class="hero-image">
+						<Image width={1020} height={510} src={heroImage} alt="" />
 					</div>
-					<slot />
+				)}
+				<div class="post-content">
+					<header class="post-header">
+						<div class="post-meta">
+							<time class="post-date">
+								<FormattedDate date={pubDate} />
+							</time>
+							{updatedDate && (
+								<div class="last-updated">
+									Last updated on <FormattedDate date={updatedDate} />
+								</div>
+							)}
+						</div>
+						<h1 class="post-title">{title}</h1>
+						<hr class="post-divider" />
+					</header>
+					<div class="post-body">
+						<slot />
+					</div>
 				</div>
 			</article>
 		</main>
 		<Footer />
 	</body>
 </html>
+
+<style>
+	.main-content {
+		min-height: calc(100vh - 200px);
+		padding: 3rem 0;
+	}
+	
+	.blog-post {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 0 1.5rem;
+	}
+	
+	.hero-image {
+		margin-bottom: 2rem;
+		text-align: center;
+	}
+	
+	.hero-image img {
+		max-width: 100%;
+		height: auto;
+		border-radius: 8px;
+		box-shadow: 0 2px 8px var(--remarkable-shadow);
+	}
+	
+	.post-content {
+		background: var(--remarkable-paper);
+		border: 1px solid var(--remarkable-border);
+		border-radius: 8px;
+		padding: 2.5rem;
+		box-shadow: 0 2px 4px var(--remarkable-shadow);
+	}
+	
+	.post-header {
+		margin-bottom: 2rem;
+		text-align: center;
+	}
+	
+	.post-meta {
+		margin-bottom: 1.5rem;
+	}
+	
+	.post-date {
+		font-size: 0.9rem;
+		color: var(--remarkable-text-muted);
+		font-weight: 400;
+		display: block;
+		margin-bottom: 0.5rem;
+	}
+	
+	.last-updated {
+		font-size: 0.85rem;
+		color: var(--remarkable-text-muted);
+		font-style: italic;
+	}
+	
+	.post-title {
+		font-size: 2.2rem;
+		font-weight: 600;
+		margin: 0;
+		color: var(--remarkable-accent);
+		line-height: 1.3;
+		word-wrap: break-word;
+		overflow-wrap: break-word;
+		hyphens: auto;
+	}
+	
+	.post-divider {
+		border: none;
+		border-top: 1px solid var(--remarkable-border);
+		margin: 1.5rem 0 0 0;
+	}
+	
+	.post-body {
+		color: var(--remarkable-text);
+		line-height: 1.6;
+		font-size: 1.1rem;
+	}
+	
+	.post-body h1,
+	.post-body h2,
+	.post-body h3,
+	.post-body h4,
+	.post-body h5,
+	.post-body h6 {
+		color: var(--remarkable-accent);
+		margin: 2rem 0 1rem 0;
+		font-weight: 600;
+		line-height: 1.3;
+	}
+	
+	.post-body h1 {
+		font-size: 1.8rem;
+	}
+	
+	.post-body h2 {
+		font-size: 1.5rem;
+	}
+	
+	.post-body h3 {
+		font-size: 1.3rem;
+	}
+	
+	.post-body p {
+		margin-bottom: 1.5rem;
+	}
+	
+	.post-body a {
+		color: var(--remarkable-accent);
+		text-decoration: none;
+		transition: color 0.2s ease;
+	}
+	
+	.post-body a:hover {
+		color: var(--remarkable-text);
+		text-decoration: underline;
+	}
+	
+	.post-body code {
+		background: var(--remarkable-highlight);
+		padding: 0.2rem 0.4rem;
+		border-radius: 3px;
+		font-size: 0.9em;
+		border: 1px solid var(--remarkable-border);
+	}
+	
+	.post-body pre {
+		background: var(--remarkable-highlight);
+		padding: 1rem;
+		border-radius: 4px;
+		overflow-x: auto;
+		border: 1px solid var(--remarkable-border);
+		margin: 1.5rem 0;
+	}
+	
+	.post-body pre code {
+		background: none;
+		padding: 0;
+		border: none;
+	}
+	
+	.post-body blockquote {
+		border-left: 3px solid var(--remarkable-accent);
+		padding-left: 1rem;
+		margin: 1.5rem 0;
+		font-style: italic;
+		color: var(--remarkable-text-light);
+	}
+	
+	.post-body ul,
+	.post-body ol {
+		margin: 1.5rem 0;
+		padding-left: 1.5rem;
+	}
+	
+	.post-body li {
+		margin-bottom: 0.5rem;
+	}
+	
+	@media (max-width: 768px) {
+		.main-content {
+			padding: 2rem 0;
+		}
+		
+		.blog-post {
+			padding: 0 1rem;
+		}
+		
+		.post-content {
+			padding: 2rem;
+		}
+		
+		.post-title {
+			font-size: 1.8rem;
+			word-wrap: break-word;
+			overflow-wrap: break-word;
+			hyphens: auto;
+		}
+		
+		.post-body {
+			font-size: 1rem;
+		}
+		
+		.post-body h1 {
+			font-size: 1.5rem;
+		}
+		
+		.post-body h2 {
+			font-size: 1.3rem;
+		}
+		
+		.post-body h3 {
+			font-size: 1.2rem;
+		}
+	}
+	
+	@media (max-width: 480px) {
+		.post-content {
+			padding: 1.5rem;
+		}
+		
+		.post-title {
+			font-size: 1.6rem;
+			word-wrap: break-word;
+			overflow-wrap: break-word;
+			hyphens: auto;
+		}
+		
+		.post-body {
+			font-size: 0.95rem;
+		}
+	}
+</style>
